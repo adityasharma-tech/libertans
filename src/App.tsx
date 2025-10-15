@@ -1,15 +1,47 @@
 import "./App.css";
+import gsap from "gsap";
 import { ArrowDown, ArrowRight, MoveRight } from "lucide-react";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// assets import
 import logo from "./assets/logo.png";
 import landBackImg from "./assets/landing-background.png";
 import cosmetics from "./assets/cosmetics.jpg";
 import shoes from "./assets/shoes.png";
 import profile from "./assets/profile.png";
+import cosmetics2 from "./assets/cosmetics-2.png";
+import googleImg from "./assets/google.png";
+import iphoneImg from "./assets/iphone.png";
+import cococola from "./assets/cococola.png";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  const objectRotatingTrigger = useRef<SVGSVGElement>(null);
+  const objectRotatingContainer = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.to(".rotate-logo", {
+      rotation: "+=360",
+      duration: 3,
+      repeat: -1,
+      ease: "linear",
+    });
+    gsap.to(".circular-text", {
+      rotation: "360",
+      duration: 4,
+      repeat: -1,
+      transformOrigin: "50% 50%",
+      ease: "linear",
+    });
+  }, [objectRotatingContainer]);
+
   return (
     <div className="px-8 h-screen w-screen relative overflow-y-auto">
-      <main className="h-full w-full border-x-2 border-neutral-200">
+      <main className="h-auto w-full border-x-2 border-neutral-200">
         <header className="px-16 py-5 border-b-2 border-neutral-200 flex justify-between items-center">
           <nav>
             <ul className="flex gap-x-10 text-xl font-medium">
@@ -27,7 +59,7 @@ export default function App() {
             </button>
           </ul>
         </header>
-        <div className="flex flex-col justify-center relative">
+        <section className="flex flex-col justify-center relative">
           <div className="absolute left-10 top-16 size-[300px] z-10 -rotate-6">
             <svg
               className="fill-violet-600 absolute -top-8 left-8 -rotate-[60deg] size-16"
@@ -96,7 +128,7 @@ export default function App() {
                 Brand{" "}
                 <span className="size-30 ring-4 ring-offset-4 ring-lime-400 bg-[#6020EA] flex justify-center items-center rounded-full">
                   <svg
-                    className="size-40 scale-125 animate-spin duration-700"
+                    className="size-40 scale-125 rotate-logo"
                     viewBox="0 0 1200 1200"
                     fill="none"
                   >
@@ -196,8 +228,8 @@ export default function App() {
               </span>
             </div>
           </div>
-        </div>
-        <div className="bg-neutral-900 rounded-4xl p-10 px-10 mt-20">
+        </section>
+        <section className="bg-neutral-900 rounded-4xl p-10 px-10 mt-20">
           <div className="w-full text-white flex justify-between py-5 border-b-2 border-neutral-700">
             <span
               className="text-4xl font-semibold"
@@ -298,14 +330,151 @@ export default function App() {
               clients' customers <br /> every time they <br /> engage with a{" "}
               <br /> brand
             </div>
-            <div className="w-3/12">
-              <div className="font-bold relative text-right px-8" style={{
-                fontFamily: "Almarena Neue",
-              }}>
-                <span className="text-white text-6xl">700</span>
-                <span className="absolute text-5xl -top-1 right-0 text-violet-600">+</span>
+            <div className="w-3/12 relative">
+              <img src={landBackImg} className="absolute opacity-0" />
+              <div
+                ref={objectRotatingContainer}
+                className="flex justify-end mb-10"
+              >
+                <svg
+                  ref={objectRotatingTrigger}
+                  className="size-[300px] relative"
+                  viewBox="0 0 300 300"
+                >
+                  <defs>
+                    <path
+                      id="circlePath"
+                      d="M 150, 150 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0"
+                    />
+                  </defs>
+
+                  <circle
+                    cx="150"
+                    cy="150"
+                    r="140"
+                    className="fill-violet-700"
+                    stroke="none"
+                  />
+
+                  <svg
+                    viewBox="0 0 1200 1200"
+                    fill="none"
+                    className="rotate-color-logo"
+                  >
+                    <rect
+                      x={282}
+                      y={541.508}
+                      width={367}
+                      height={185}
+                      rx={92.5}
+                      transform="rotate(-45 282 541.508)"
+                      className="fill-lime-300"
+                    />
+                    <rect
+                      x={345.64}
+                      y={535.851}
+                      width={265}
+                      height={107}
+                      rx={53.5}
+                      transform="rotate(-45 345.64 535.851)"
+                      className="fill-violet-700"
+                    />
+                    <rect
+                      x={918.323}
+                      y={658.815}
+                      width={367}
+                      height={185}
+                      rx={92.5}
+                      transform="rotate(135 918.323 658.815)"
+                      className="fill-lime-300"
+                    />
+                    <rect
+                      x={854.683}
+                      y={664.472}
+                      width={265}
+                      height={107}
+                      rx={53.5}
+                      transform="rotate(135 854.683 664.472)"
+                      className="fill-violet-700"
+                    />
+                    <rect
+                      x={787.508}
+                      y={672.323}
+                      width={367}
+                      height={185}
+                      rx={92.5}
+                      transform="rotate(-135 787.508 672.323)"
+                      className="fill-lime-300"
+                    />
+                    <rect
+                      x={781.851}
+                      y={608.683}
+                      width={265}
+                      height={107}
+                      rx={53.5}
+                      transform="rotate(-135 781.851 608.683)"
+                      className="fill-violet-700"
+                    />
+                    <rect
+                      x={541.508}
+                      y={918.323}
+                      width={367}
+                      height={185}
+                      rx={92.5}
+                      transform="rotate(-135 541.508 918.323)"
+                      className="fill-lime-300"
+                    />
+                    <rect
+                      x={535.851}
+                      y={854.683}
+                      width={265}
+                      height={107}
+                      rx={53.5}
+                      transform="rotate(-135 535.851 854.683)"
+                      className="fill-violet-700"
+                    />
+                  </svg>
+
+                  <text
+                    fill="#fff"
+                    fontSize={28}
+                    className="font-medium circular-text"
+                  >
+                    <textPath href="#circlePath">LET'S GET STARTED</textPath>
+                    <textPath
+                      href="#circlePath"
+                      className="fill-lime-300 text-4xl"
+                      startOffset={"44.5%"}
+                    >
+                      •
+                    </textPath>
+                    <textPath
+                      href="#circlePath"
+                      className="fill-lime-300 text-4xl"
+                      startOffset={"94.5%"}
+                    >
+                      •
+                    </textPath>
+                    <textPath href="#circlePath" startOffset={"50%"}>
+                      LET'S GET STARTED
+                    </textPath>
+                  </text>
+                </svg>
               </div>
-              <div className="text-lime-300 text-right text-xl">Project Completed</div>
+              <div
+                className="font-bold relative text-right pr-9"
+                style={{
+                  fontFamily: "Almarena Neue",
+                }}
+              >
+                <span className="text-white text-7xl">700</span>
+                <span className="absolute text-5xl -top-1 right-0 text-violet-600">
+                  +
+                </span>
+              </div>
+              <div className="text-lime-300 text-right text-xl">
+                Project Completed
+              </div>
             </div>
             <div className="text-xl text-neutral-400 absolute right-0 bottom-0">
               We take pride in our client success stories, where our creative{" "}
@@ -313,7 +482,184 @@ export default function App() {
               achiving their <br /> business goals and surpassing expectations.
             </div>
           </div>
-        </div>
+        </section>
+        <div className="h-0.5 bg-neutral-200 w-full mt-15" />
+        <section className="mt-15 px-10 relative">
+          <div
+            className="uppercase text-violet-600 font-medium text-xl"
+            style={{
+              fontFamily: "Almarena Neue",
+            }}
+          >
+            recent work
+          </div>
+          <div
+            className="text-5xl font-semibold mt-7"
+            style={{
+              fontFamily: "Almarena Neue",
+            }}
+          >
+            Through meticulous planning, seamless execution, <br /> and creative
+            problem-solving, we achieved <br /> remarkable project success.
+          </div>
+          <div className="w-full flex py-20">
+            <div className="w-1/2 pr-15 flex flex-col gap-y-25">
+              <div className="relative">
+                <svg
+                  className="fill-lime-300 absolute -top-14 right-8 -rotate-[60deg] size-26"
+                  viewBox="0 0 118 118"
+                  fill="none"
+                >
+                  <path d="M59 0l.016.508C59.723 20.328 72.788 58.603 118 59c-47.957 3.17-58.49 39.984-58.03 58.492C59.263 97.663 46.197 58.897.986 58.5c47.957-3.17 58.49-39.493 58.03-57.992C59.009.338 59.004.168 59 0z" />
+                </svg>
+                <img
+                  src={cosmetics2}
+                  className="rounded-[50px] h-[70vh] w-full object-cover"
+                />
+                <div
+                  style={{
+                    fontFamily: "Almarena Neue",
+                  }}
+                  className="text-3xl font-semibold text-violet-600 mt-5 px-3"
+                >
+                  The Ordinary
+                </div>
+                <div className="font-medium mt-3 text-neutral-400 px-3">
+                  DesignDigital, WebContent, Campaigns Events & Activations
+                </div>
+              </div>
+              <div className="relative">
+                <svg
+                  className="fill-lime-300 absolute bottom-[30%] -left-10 rotate-[60deg] size-20"
+                  viewBox="0 0 118 118"
+                  fill="none"
+                >
+                  <path d="M59 0l.016.508C59.723 20.328 72.788 58.603 118 59c-47.957 3.17-58.49 39.984-58.03 58.492C59.263 97.663 46.197 58.897.986 58.5c47.957-3.17 58.49-39.493 58.03-57.992C59.009.338 59.004.168 59 0z" />
+                </svg>
+                <img
+                  src={iphoneImg}
+                  className="rounded-[50px] h-[70vh] w-full object-cover"
+                />
+                <div
+                  style={{
+                    fontFamily: "Almarena Neue",
+                  }}
+                  className="text-3xl font-semibold text-violet-600 mt-5 px-3"
+                >
+                  Apple Inc
+                </div>
+                <div className="font-medium mt-3 text-neutral-400 px-3">
+                  DesignDigital, WebContent, Campaigns Events & Activations,
+                  Brand <br /> Strategy, VoiceBranding
+                </div>
+              </div>
+            </div>
+            <div className="w-1/2 pl-15 flex flex-col gap-y-25">
+              <div className="relative first:mt-36">
+                <img
+                  src={googleImg}
+                  className="rounded-[50px] h-[70vh] w-full object-cover"
+                />
+                <div
+                  style={{
+                    fontFamily: "Almarena Neue",
+                  }}
+                  className="text-3xl font-semibold text-violet-600 mt-5 px-3"
+                >
+                  Google LLC
+                </div>
+                <div className="font-medium mt-3 text-neutral-400 px-3">
+                  Brand Strategy, VoiceBranding, DesignDigital, WebContent,{" "}
+                  <br /> Campaigns Events & Activations
+                </div>
+              </div>
+              <div className="relative first:mt-36">
+                <div
+                  ref={objectRotatingContainer}
+                  className="flex justify-end mb-10 absolute scale-80 right-0"
+                >
+                  <svg
+                    ref={objectRotatingTrigger}
+                    className="size-[300px] relative"
+                    viewBox="0 0 300 300"
+                  >
+                    <defs>
+                      <path
+                        id="circlePath"
+                        d="M 150, 150 m -100, 0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0"
+                      />
+                    </defs>
+
+                    <circle
+                      cx="150"
+                      cy="150"
+                      r="140"
+                      className="fill-lime-300"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="150"
+                      cy="150"
+                      r="131"
+                      className="stroke-white fill-none stroke-[2px]"
+                    />
+
+                   
+                      <ArrowDown color="#fff" size={120} className="-rotate-[145deg] -translate-x-5 -translate-y-[125px]" style={{
+                        transformOrigin: "50% 50%"
+                      }}/>
+
+                    <text
+                      fontSize={28}
+                      className="font-semibold circular-text fill-violet-600"
+                    >
+                      <textPath href="#circlePath">VIEW MORE</textPath>
+                      <textPath href="#circlePath"startOffset={"32%"}>VIEW MORE</textPath>
+                      <textPath href="#circlePath"startOffset={"65%"}>VIEW MORE</textPath>
+                      <textPath
+                        href="#circlePath"
+                        className="fill-white text-4xl"
+                        startOffset={"94%"}
+                      >
+                        •
+                      </textPath>
+                      <textPath
+                        href="#circlePath"
+                        className="fill-white text-4xl"
+                        startOffset={"27.5%"}
+                      >
+                        •
+                      </textPath>
+                      <textPath
+                        href="#circlePath"
+                        className="fill-white text-4xl"
+                        startOffset={"60%"}
+                      >
+                        •
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+                <img
+                  src={cococola}
+                  className="rounded-[50px] rounded-tr-[550px] h-[70vh] w-full object-cover"
+                />
+                <div
+                  style={{
+                    fontFamily: "Almarena Neue",
+                  }}
+                  className="text-3xl font-semibold text-violet-600 mt-5 px-3"
+                >
+                  The Coca-Cola Company
+                </div>
+                <div className="font-medium mt-3 text-neutral-400 px-3">
+                  Brand Strategy, VoiceBranding, DesignDigital, WebContent,{" "}
+                  <br /> Content & Campaigns
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
