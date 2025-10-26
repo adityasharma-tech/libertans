@@ -15,6 +15,8 @@ import cosmetics2 from "./assets/cosmetics-2.png";
 import googleImg from "./assets/google.png";
 import iphoneImg from "./assets/iphone.png";
 import cococola from "./assets/cococola.png";
+import backgroundAbsoluteLogo from "./assets/BackgroundAbsoluteCropped.png";
+import backgroundAbsoluteLogo2 from "./assets/BackgroundAbsoluteLogo2.png";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -484,7 +486,16 @@ export default function App() {
           </div>
         </section>
         <div className="h-0.5 bg-neutral-200 w-full mt-15" />
-        <section className="mt-15 px-10 relative">
+        <section className="mt-15 px-10 relative overflow-x-visible">
+          <img
+            src={backgroundAbsoluteLogo}
+            className="absolute -right-8 w-140"
+          />
+          <img
+            src={backgroundAbsoluteLogo2}
+            className="absolute -left-8 opacity-10 bottom-0 w-140"
+          />
+
           <div
             className="uppercase text-violet-600 font-medium text-xl"
             style={{
@@ -604,18 +615,26 @@ export default function App() {
                       className="stroke-white fill-none stroke-[2px]"
                     />
 
-                   
-                      <ArrowDown color="#fff" size={120} className="-rotate-[145deg] -translate-x-5 -translate-y-[125px]" style={{
-                        transformOrigin: "50% 50%"
-                      }}/>
+                    <ArrowDown
+                      color="#fff"
+                      size={120}
+                      className="-rotate-[145deg] -translate-x-5 -translate-y-[125px]"
+                      style={{
+                        transformOrigin: "50% 50%",
+                      }}
+                    />
 
                     <text
                       fontSize={28}
                       className="font-semibold circular-text fill-violet-600"
                     >
                       <textPath href="#circlePath">VIEW MORE</textPath>
-                      <textPath href="#circlePath"startOffset={"32%"}>VIEW MORE</textPath>
-                      <textPath href="#circlePath"startOffset={"65%"}>VIEW MORE</textPath>
+                      <textPath href="#circlePath" startOffset={"32%"}>
+                        VIEW MORE
+                      </textPath>
+                      <textPath href="#circlePath" startOffset={"65%"}>
+                        VIEW MORE
+                      </textPath>
                       <textPath
                         href="#circlePath"
                         className="fill-white text-4xl"
@@ -660,6 +679,106 @@ export default function App() {
             </div>
           </div>
         </section>
+        <div className="h-0.5 bg-neutral-200 w-full"></div>
+        <section className="w-full grid-cols-5 grid gap-10 p-10 py-20">
+          {[
+            "KelloggsLogo.png",
+            "LorealLogo.png",
+            "HeinkenLogo.png",
+            "JeepLogo.png",
+            "ChampionLogo.png",
+            "SpotifyLogo.png",
+            "AllianzLogo.png",
+            "CocoColaLogo.png",
+            "GilletteLogo.png",
+            "NetflixLogo.png",
+          ].map((img) => (
+            <div className="px-10">
+              <img className="scale-75" src={`/src/assets/${img}`} />
+            </div>
+          ))}
+        </section>
+        <div className="h-0.5 bg-neutral-200 w-full"></div>
+        <section className="pt-26">
+          <div className="bg-neutral-900 rounded-4xl text-neutral-50 py-20 px-10">
+            <div className="w-full flex flex-col justify-center items-center">
+              <div
+                style={{
+                  fontFamily: "Almarena Neue",
+                }}
+                className="text-lime-300 font-medium text-3xl py-6"
+              >
+                Start crafting your branding story
+              </div>
+              <h1
+                className="gap-y-5 flex flex-col text-center relative z-5"
+                style={{
+                  fontFamily: "Almarena Neue",
+                  fontWeight: 600,
+                }}
+              >
+                <div className="uppercase text-8xl">
+                  partner with us to create{" "}
+                </div>{" "}
+                <div className="flex justify-center text-8xl uppercase">
+                  a
+                  <span className="relative rotate-[0.1deg] block overflow-visible text-neutral-900">
+                    <span className="bg-[#b9e901] rotate-2 left-1 -top-1 bottom-4 rounded-xl right-2 -z-10 absolute" />
+                    compelling
+                  </span>{" "}
+                  narrative
+                </div>
+                <div className="uppercase text-8xl">for your brand!</div>{" "}
+              </h1>
+              <div
+                className="text-neutral-400 py-6 text-center text-lg"
+                style={{
+                  fontFamily: "Almarena Neue",
+                }}
+              >
+                Let's bring your ideas to life, start collaborating with our
+                creative <br />
+                agency and turn your vision into reality.
+              </div>
+            </div>
+            <div className="h-0.5 bg-neutral-700 w-full"></div>
+            <div
+              style={{
+                fontFamily: "Almarena Neue",
+              }}
+              className="flex justify-between pt-10 items-center"
+            >
+              <div>
+                <div className="text-3xl font-medium text-lime-300 mb-1">
+                  Libertans
+                </div>
+                <div className="text-white">
+                  35 N Deaborn ST, Chicago, IL 60601, USA <br />
+                  +1-202-555-616 (555) 555-1234 <br />
+                  info@libertans.com
+                </div>
+              </div>
+              <div>
+                <div className="flex gap-x-3">
+                  {[
+                    "Market research",
+                    "Ads Production",
+                    "Branding strategies",
+                  ].map((v) => (
+                    <button className="text-lg border px-5 py-2 border-neutral-600 rounded-full">
+                      {v}
+                    </button>
+                  ))}
+                </div>
+                <div className="gap-x-10 flex py-4 text-neutral-400 justify-end">
+                  <span>Privacy & Cookie Policy</span>
+                  <span>Libertans © 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="p-5"></div>
       </main>
     </div>
   );
